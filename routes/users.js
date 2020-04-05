@@ -102,7 +102,7 @@ router.post("/login", async function (req, res, next) {
         } else {
           res
             .status(401)
-            .json({ code: "password-mismatch", message: "Password incorreto" });
+            .json({ code: "password-mismatch", message: "Senha incorreta" });
         }
       });
     } else {
