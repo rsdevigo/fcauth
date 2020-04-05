@@ -1,0 +1,27 @@
+{
+  "name": "fcauth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "bcrypt": "^4.0.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-cors": "0.0.3",
+    "firebase-admin": "^8.10.0",
+    "helmet": "^3.22.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.1.0",
+    "postgres": "^1.0.2",
+    "prettier": "^2.0.2",
+    "uuid": "^7.0.3"
+  }
+}
