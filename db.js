@@ -9,15 +9,15 @@ exports.MODE_PRODUCTION = "mode_production";
 
 var state = {
   pool: null,
-  mode: null
+  mode: null,
 };
 
 exports.connect = function (mode, done) {
   state.pool = mysql.createPool({
     host: "localhost",
-    user: "root",
-    password: "root",
-    database: mode === exports.MODE_PRODUCTION ? PRODUCTION_DB : TEST_DB
+    user: "fcauth",
+    password: "fcauth",
+    database: mode === exports.MODE_PRODUCTION ? PRODUCTION_DB : TEST_DB,
   });
 
   state.mode = mode;
