@@ -7,14 +7,24 @@
 var app = require("../app");
 var debug = require("debug")("fcauth:server");
 var http = require("http");
+var https = require("https");
 var db = require("../db");
-
+var fs = require("fs");
+if (process.env.NODE_ENV == "production") {
+  var ssl = {
+    key: fs.readFileSync("/etc/letsencrypt/live/findmybusnj.com/privkey.pem"),
+    cert: fs.readFileSync(
+      "/etc/letsencrypt/live/findmybusnj.com/fullchain.pem"
+    ),
+    ca: fs.readFileSync("/etc/letsencrypt/live/findmybusnj.com/chain.pem"),
+  };
+}
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "8080");
-app.set("port", port);
+//var port = normalizePort(process.env.PORT || "8080");
+//app.set("port", port);
 
 /**
  * Create HTTP server.
@@ -30,7 +40,10 @@ db.connect(db.MODE_PRODUCTION, function (err) {
   if (err) {
     process.exit(1);
   } else {
-    server.listen(port);
+    http.createServer(app).listen(process.env.PORT || 8080);
+    if (process.env.NODE_ENV == "production") {
+      https.createServer(ssl, app).listen(process.env.PORT || 8443);
+    }
     server.on("error", onError);
     server.on("listening", onListening);
   }

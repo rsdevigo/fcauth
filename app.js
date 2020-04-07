@@ -22,7 +22,10 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+if (process.env.NODE_ENV == "production") {
+  app.set("trust proxy", true);
+  app.set("trust proxy", "loopback");
+}
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

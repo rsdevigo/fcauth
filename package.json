@@ -16,6 +16,7 @@
     "express": "~4.16.1",
     "express-cors": "0.0.3",
     "firebase-admin": "^8.10.0",
+    "firebase-scrypt": "^2.0.0",
     "helmet": "^3.22.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
